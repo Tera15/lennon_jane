@@ -4,7 +4,7 @@ import Image from "next/image";
 import useInstagramPost from "../hooks/useInstagramPosts";
 const InstagramWidget = () => {
   const posts = useInstagramPost();
-  const iPosts = posts.data.data.slice(0, 6);
+  const iPosts = posts.data.data.slice(0, 6) || [];
   console.log(iPosts);
   return (
     <div sx={{ textAlign: "center" }}>

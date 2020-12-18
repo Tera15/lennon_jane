@@ -1,5 +1,7 @@
 /** @jsx jsx */ /** @jsxRuntime classic */
-
+import { QueryClient } from "react-query";
+import { dehydrate } from "react-query/hydration";
+import { commerce } from "../src/lib/commerce";
 import { jsx, Divider, Heading } from "theme-ui";
 import Layout from "../components/Layout";
 import CartItem from "../components/CartItem";
@@ -44,4 +46,16 @@ const Cart = () => {
   );
 };
 
+export async function getServerSideProps() {
+  let queryClient = new QueryClient();
+  await queryClient.prefetchQuery(
+    "cart",
+    commerce.cart.contents().then((content) => content)
+  );
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    }, // will be passed to the page component as props
+  };
+}
 export default Cart;

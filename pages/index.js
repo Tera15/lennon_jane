@@ -17,7 +17,7 @@ export default function Home({ instaPosts }) {
 }
 
 export async function getStaticProps() {
-  const url = `https://graph.instagram.com/me/media?fields=id,media_url,caption&access_token=${process.env.LENNON_JANE_INSTAGRAM}`;
+  const url = `https://graph.instagram.com/me/media?fields=id,media_url,caption&access_token=${process.env.NEXT_PUBLIC_LENNON_JANE_INSTAGRAM}`;
   const response = await fetch(url);
   const data = await response.json();
   const instaPosts = data.data.slice(0, 6);

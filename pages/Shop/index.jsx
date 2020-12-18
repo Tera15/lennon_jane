@@ -35,7 +35,7 @@ const Shop = () => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const queryClient = new QueryClient();
   const getProducts = async () => {
     const products = await commerce.products.list();

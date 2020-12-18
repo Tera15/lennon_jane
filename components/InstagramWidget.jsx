@@ -1,8 +1,11 @@
 /** @jsx jsx */ /** @jsxRuntime classic */
 import { jsx, Heading } from "theme-ui";
 import Image from "next/image";
-
-const InstagramWidget = ({ instaPosts }) => {
+import useInstagramPost from "../hooks/useInstagramPosts";
+const InstagramWidget = () => {
+  const posts = useInstagramPost();
+  const iPosts = posts.data.data.slice(0, 6);
+  console.log(iPosts);
   return (
     <div sx={{ textAlign: "center" }}>
       <Heading
@@ -15,7 +18,7 @@ const InstagramWidget = ({ instaPosts }) => {
         Follow us @lennonjaneco
       </Heading>
       <div sx={{ variant: "containers.instagramWidget" }}>
-        {instaPosts.map((post) => {
+        {iPosts.map((post) => {
           return (
             <a
               href="https://instagram.com/lennonjaneco"

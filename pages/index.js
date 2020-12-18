@@ -27,7 +27,6 @@ export async function getServerSideProps() {
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
-      instaPosts: instaPosts,
     },
   };
 }

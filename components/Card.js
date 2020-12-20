@@ -1,5 +1,3 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
-
 import { jsx, Card, Text } from "theme-ui";
 import Image from "next/image";
 const ProductCard = ({ name, price, url }) => {

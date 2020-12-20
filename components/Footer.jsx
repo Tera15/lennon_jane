@@ -1,5 +1,3 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
-
 import { jsx } from "theme-ui";
 import BrandLogo from "./BrandLogo";
 import Navigation from "./Navigation";

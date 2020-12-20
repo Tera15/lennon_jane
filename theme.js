@@ -2,6 +2,37 @@ import { roboto } from "@theme-ui/presets";
 
 const theme = {
   ...roboto,
+  headers: {
+    head: {
+      my: 0,
+      fontSize: 8,
+      fontWeight: 300,
+      letterSpacing: 16,
+    },
+    sub: {
+      fontSize: 7,
+      letterSpacing: 4,
+      fontWeight: 3,
+      my: 2,
+    },
+    sub_sub: {
+      fontSize: 5,
+      letterSpacing: 4,
+      fontWeight: 3,
+      my: 2,
+    },
+  },
+  paragraph: {
+    fontSize: 2,
+    letterSpacing: 2,
+    maxWidth: "65ch",
+    my: 4,
+    color: "textMain",
+  },
+  button: {
+    backgroundColor: "secondary",
+    borderRadius: 0,
+  },
   containers: {
     shopPage: {
       display: "grid",
@@ -42,8 +73,8 @@ const theme = {
     },
     instagramWidget: {
       display: "grid",
-      p: 100,
-      my: 100,
+      p: 4,
+      my: 6,
       gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr",
     },
     footer: {
@@ -61,14 +92,17 @@ const theme = {
     secondary: "#BA694C",
     background: "#fff",
     altBackground: "#F2EFEB",
+    textMain: "#211d1a",
   },
   styles: {
     ...roboto.styles,
     a: {
       color: "muted",
       fontWeight: "300",
-      letterSpacing: "2px",
+      letterSpacing: 4,
       cursor: "pointer",
+      fontSize: 2,
+      transition: "0.3s ease",
     },
   },
 };

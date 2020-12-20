@@ -1,5 +1,3 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
-
 import { jsx } from "theme-ui";
 import { Grid, Card, Text, Heading, Button } from "theme-ui";
 import Image from "next/image";
@@ -13,7 +11,7 @@ const Blurb = () => {
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
         justifyItems: "center",
-        py: 6,
+        py: 4,
       }}
     >
       <div
@@ -52,25 +50,29 @@ const Blurb = () => {
         />
       </div>
       <div>
-        <Heading as="h2" sx={{ color: "secondary", fontSize: 65 }}>
+        <Heading
+          as="h2"
+          sx={{
+            variant: "headers.sub",
+            color: "secondary",
+          }}
+        >
           For every type <br /> of hair day.
         </Heading>
         <BrandLogo />
       </div>
       <div sx={{ maxWidth: "65ch" }}>
-        <Heading as="h2" sx={{ fontSize: 40 }}>
+        <Heading as="h2" sx={{ variant: "headers.sub_sub" }}>
           Ethically Made. Hand Finished.
         </Heading>
-        <Text sx={{ fontSize: 20 }}>
+        <Text sx={{ variant: "paragraph" }}>
           Made In Canada, our hair accessories are hand-finished to accomplish a
           seamless style for all your hair needs. <br /> For each purchase, 10%
           of the sale price is donated to a select charity of the month.
         </Text>
         <Button
           sx={{
-            bg: "muted",
-            color: "black",
-            borderRadius: 0,
+            variant: "button",
           }}
         >
           Learn More

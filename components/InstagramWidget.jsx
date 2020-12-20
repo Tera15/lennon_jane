@@ -1,4 +1,3 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
 import { jsx, Heading } from "theme-ui";
 import Image from "next/image";
 import useInstagramPost from "../hooks/useInstagramPosts";
@@ -11,8 +10,7 @@ const InstagramWidget = () => {
       <Heading
         sx={{
           transform: "translate(0, 10rem)",
-          fontWeight: "300",
-          letterSpacing: "2px",
+          variant: "headers.sub_sub",
         }}
       >
         Follow us @lennonjaneco

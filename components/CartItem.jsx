@@ -1,8 +1,8 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
 import { jsx, Container, Text, Divider, Button, Heading } from "theme-ui";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import useRemoveFromCart from "../hooks/useRemoveFromCart";
+import useUpdateCart from "../hooks/useUpdateCart";
 
 const CartItem = ({
   url,
@@ -13,18 +13,35 @@ const CartItem = ({
   imageHeight,
   bagPage,
 }) => {
-  const { mutate, status, reset } = useRemoveFromCart();
-  const [bagQuantity, setBagQuanity] = useState();
-
+  const {
+    mutate: add,
+    status: addStatus,
+    reset: addReset,
+  } = useRemoveFromCart();
+  const {
+    mutate: update,
+    status: updateStatus,
+    reset: updateReset,
+  } = useUpdateCart();
+  const [bagQuantity, setBagQuantity] = useState("");
   useEffect(() => {
-    setBagQuanity(quantity);
+    setBagQuantity(quantity);
   }, []);
+
+  const handleUpdateQuanity = async (event, id, qty) => {
+    event.preventDefault();
+    console.log({ id });
+    let values = { id, quantity: +qty };
+    update(values);
+  };
+
   return (
     <Container
       sx={{
         color: "black",
         position: "relative",
-        fontWeight: "bold",
+        fontWeight: "300",
+        letterSpacing: 4,
       }}
     >
       <div
@@ -53,42 +70,39 @@ const CartItem = ({
             textDecoration: "underline",
             cursor: "pointer",
           }}
-          onClick={() => mutate(id)}
+          onClick={(e) => add(e, id)}
         >
           Remove
         </Text>
-        {!bagPage ? (
-          <div>
-            <Text sx={{ textTransform: "lowercase" }}>x{quantity} </Text>
-          </div>
-        ) : (
-          <form>
-            <label htmlFor="quantity">x</label>
-            <input
-              id="quantity"
-              type="number"
-              value={bagQuantity}
-              sx={{
-                width: "3rem",
-                height: 35,
-                border: "none",
-                backgroundColor: "muted",
-                fontSize: 25,
-                textAlign: "center",
-              }}
-            />
-            <Button
-              sx={{
-                backgroundColor: "secondary",
-                borderRadius: 0,
-                mx: 2,
-                py: 0.5,
-              }}
-            >
-              save
-            </Button>
-          </form>
-        )}
+
+        <form onSubmit={(e) => handleUpdateQuanity(e, id, bagQuantity)}>
+          <label htmlFor="quantity">x</label>
+          <input
+            id="quantity"
+            type="number"
+            min="0"
+            value={bagQuantity}
+            onChange={(e) => setBagQuantity(e.target.value)}
+            sx={{
+              width: "3rem",
+              height: 35,
+              border: "none",
+              backgroundColor: "muted",
+              fontSize: 25,
+              textAlign: "center",
+            }}
+          />
+          <Button
+            sx={{
+              backgroundColor: "secondary",
+              borderRadius: 0,
+              mx: 2,
+              py: 0.5,
+            }}
+          >
+            save
+          </Button>
+        </form>
       </div>
     </Container>
   );

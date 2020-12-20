@@ -1,5 +1,3 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
-
 import Image from "next/image";
 import { jsx } from "theme-ui";
 

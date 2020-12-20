@@ -1,9 +1,9 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { commerce } from "../../src/lib/commerce";
 import { useQueryClient, useMutation, useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import { jsx, Button, Text, Heading, Grid } from "theme-ui";
+import { Button, Text, Heading, Grid } from "theme-ui";
 import Layout from "../../components/Layout";
 import Image from "next/image";
 import useAddToCart from "../../hooks/useAddToCart";
@@ -55,13 +55,13 @@ const ShopPage = ({ product, productId }) => {
             sx={{
               textAlign: "center",
               transform: "translate(0, -15rem)",
+              variant: "headers.sub",
               color: "secondary",
-              fontSize: 80,
             }}
           >
             {name}
           </Heading>
-          <Text sx={{ maxWidth: "65ch", fontSize: 20 }}>
+          <Text sx={{ variant: "paragraph" }}>
             Made in Canada, our hair accessories are hand-finished to accomplish
             a seamless style for all your hair needs. <br />
             For each purchase, 10% of the sale price is donated to a select
@@ -75,7 +75,7 @@ const ShopPage = ({ product, productId }) => {
             sx={{ display: "flex", flexDirection: "column" }}
           >
             <label htmlFor="quantity" sx={{ display: "inline-block", my: 10 }}>
-              <Text>Quantity</Text>
+              <Text sx={{ variant: "paragraph" }}>Quantity</Text>
               <input
                 onChange={(event) => setQuantity(event.target.value)}
                 type="number"
@@ -84,16 +84,12 @@ const ShopPage = ({ product, productId }) => {
                 value={quantity}
               />
             </label>
-            <Button
-              sx={{ width: 110, backgroundColor: "secondary", borderRadius: 0 }}
-            >
-              Add to cart
-            </Button>
+            <Button sx={{ variant: "button" }}>Add to cart</Button>
           </form>
         </div>
 
         <div sx={{ p: 2 }}>
-          <Heading sx={{ color: "secondary", fontSize: 60 }}>
+          <Heading sx={{ color: "secondary", variant: "headers.sub" }}>
             You may also like
           </Heading>
         </div>
@@ -108,7 +104,15 @@ const ShopPage = ({ product, productId }) => {
         >
           {related_products.map((product) => {
             return (
-              <Image src={product.media.source} height={250} width={250} />
+              <Link
+                href="/Shop/[id.js]"
+                as={`/Shop/${product.id}`}
+                key={product.id}
+              >
+                <a>
+                  <Image src={product.media.source} height={250} width={250} />
+                </a>
+              </Link>
             );
           })}
         </div>

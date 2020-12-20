@@ -1,4 +1,3 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
 import { jsx, Styled } from "theme-ui";
 import Link from "next/link";
 

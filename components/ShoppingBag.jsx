@@ -1,15 +1,14 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
 import React, { useState } from "react";
 import { jsx, Divider, Text, Heading, Styled } from "theme-ui";
 import Image from "next/image";
 import Link from "next/link";
 import CartItem from "./CartItem";
+import CartDropdownItem from "./CartDropdownItem";
 import useCart from "../hooks/useCart";
 import useRemoveFromCart from "../hooks/useRemoveFromCart";
 const ShoppingBag = ({ x, y }) => {
   const [openState, setOpenState] = useState(false);
   const products = useCart();
-  console.log(products);
   // cart functionality
   const cartItems = products.data;
   const cartTotal =
@@ -56,14 +55,16 @@ const ShoppingBag = ({ x, y }) => {
       >
         {cartItems &&
           cartItems.map((item) => {
+            console.log(item);
             return (
               <div key={item.id}>
-                <CartItem
+                <CartDropdownItem
                   url={item.media.source}
                   price={item.line_total.formatted}
                   quantity={item.quantity}
                   name={item.name}
                   id={item.id}
+                  product_id={item.product_id}
                   imageWidth={100}
                   imageHeight={100}
                 />

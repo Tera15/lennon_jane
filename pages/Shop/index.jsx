@@ -1,9 +1,8 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
 import { commerce } from "../../src/lib/commerce";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
 import useProducts from "../../hooks/useProducts";
-import { jsx, Styled } from "theme-ui";
+import { Styled } from "theme-ui";
 import Link from "next/link";
 
 import Layout from "../../components/Layout";

@@ -1,5 +1,3 @@
-/** @jsx jsx */ /** @jsxRuntime classic */
-
 import { jsx } from "theme-ui";
 import React from "react";
 import NavBar from "./NavBar";
